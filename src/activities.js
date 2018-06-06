@@ -1,4 +1,3 @@
-import React, { Component } from 'react'
 import uid from 'uid'
 
 export default [
@@ -17,9 +16,3 @@ export default [
   { activity: 'Shoppen', checked: false, id: uid() },
   { activity: 'Roadtrip', checked: false, id: uid() },
 ]
-
-/*export default class Activitylist extends Component {
-  render() {
-    return <div />
-  }
-}*/

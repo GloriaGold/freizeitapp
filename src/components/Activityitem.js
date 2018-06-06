@@ -2,12 +2,6 @@ import React, { Component } from 'react'
 import styled from 'react-emotion'
 import { css } from 'emotion'
 
-const quoteStyle = css`
-  font-size: 1.3em;
-  display: block;
-  margin-bottom: 20px;
-`
-
 const StyledActivity = styled('div')`
   display: flex;
   font-family: sans-serif;
@@ -19,11 +13,14 @@ const StyledActivity = styled('div')`
   border-radius: 4px;
   overflow: hidden;
   text-align: center;
+  font-size: 1.3em;
+  display: block;
+  margin-bottom: 20px;
 `
 
-export default class Activityitem extends Component {
+export default class ActivityItem extends Component {
   render() {
     const { text } = this.props
-    return <StyledActivity className={quoteStyle}>{text} </StyledActivity>
+    return <StyledActivity>{text} </StyledActivity>
   }
 }

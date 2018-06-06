@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { injectGlobal } from 'emotion'
 import styled from 'react-emotion'
-import Activitylist from './Activitylist'
-import Activityitem from './components/Activityitem'
+import activities from './activities'
+import ActivityItem from './components/ActivityItem'
 import logo from './images/discover_compass_search_explorer-512.png'
 
 const Grid = styled('div')`
@@ -25,12 +25,11 @@ const List = styled('div')`
 `
 
 class App extends Component {
+  state = {
+    activityList: activities,
+  }
   constructor(props) {
     super(props)
-
-    this.state = {
-      activitylist: Activitylist,
-    }
   }
 
   render() {
@@ -38,8 +37,8 @@ class App extends Component {
       <Grid>
         <Title>Discover</Title>
         <List>
-          {this.state.activitylist.map(activity => {
-            return <Activityitem text={activity.activity} />
+          {this.state.activityList.map(activity => {
+            return <ActivityItem text={activity.activity} />
           })}
         </List>
       </Grid>
