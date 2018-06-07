@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { injectGlobal } from 'emotion'
+
 import styled from 'react-emotion'
 import activities from './activities'
 import ActivityItem from './components/ActivityItem'
-import logo from './images/discover_compass_search_explorer-512.png'
 
 const Grid = styled('div')`
   display: grid;
@@ -25,10 +24,6 @@ const List = styled('div')`
 `
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   state = {
     activities: activities,
   }

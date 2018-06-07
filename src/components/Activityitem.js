@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import styled from 'react-emotion'
-import { css } from 'emotion'
 import bookmarkImage from '../images/bookmark_icon.svg'
 import bookmarkClickedImage from '../images/bookmark__clicked.svg'
 
