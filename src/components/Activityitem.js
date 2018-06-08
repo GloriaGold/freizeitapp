@@ -39,11 +39,11 @@ export default class ActivityItem extends Component {
 
     return (
       <StyledActivity>
-        {text}
         <StyledButton
           isBookmarked={isBookmarked}
           onClick={e => this.props.onBookmark()}
         />{' '}
+        {text}
       </StyledActivity>
     )
   }
