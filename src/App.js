@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { injectGlobal } from 'emotion'
+
 import styled from 'react-emotion'
 import activities from './activities'
 import ActivityItem from './components/ActivityItem'
-import logo from './images/discover_compass_search_explorer-512.png'
 
 const Grid = styled('div')`
   display: grid;
@@ -26,10 +25,27 @@ const List = styled('div')`
 
 class App extends Component {
   state = {
-    activityList: activities,
+    activities: activities,
   }
-  constructor(props) {
-    super(props)
+
+  bookmark(id) {
+    const foundActivityIndex = this.state.activities.findIndex(
+      activity => activity.id === id
+    )
+
+    const foundActivity = this.state.activities[foundActivityIndex]
+
+    const startOfNewArray = this.state.activities.slice(0, foundActivityIndex)
+    const endOfNewArray = this.state.activities.slice(foundActivityIndex + 1)
+    const newObject = {
+      ...foundActivity,
+      isBookmarked: !foundActivity.isBookmarked,
+    }
+    console.log(newObject)
+
+    this.setState({
+      activities: [...startOfNewArray, newObject, ...endOfNewArray],
+    })
   }
 
   render() {
@@ -37,8 +53,14 @@ class App extends Component {
       <Grid>
         <Title>Discover</Title>
         <List>
-          {this.state.activityList.map(activity => {
-            return <ActivityItem text={activity.activity} />
+          {this.state.activities.map(activity => {
+            return (
+              <ActivityItem
+                text={activity.activity}
+                isBookmarked={activity.isBookmarked}
+                onBookmark={() => this.bookmark(activity.id)}
+              />
+            )
           })}
         </List>
       </Grid>

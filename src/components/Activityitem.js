@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'react-emotion'
-import { css } from 'emotion'
+import bookmarkImage from '../images/bookmark_icon.svg'
+import bookmarkClickedImage from '../images/bookmark__clicked.svg'
 
 const StyledActivity = styled('div')`
   display: flex;
@@ -20,7 +21,30 @@ const StyledActivity = styled('div')`
 
 export default class ActivityItem extends Component {
   render() {
-    const { text } = this.props
-    return <StyledActivity>{text} </StyledActivity>
+    const { text, isBookmarked } = this.props
+    const StyledButton = styled('button')`
+      height: 20px;
+
+      background-image: url(${isBookmarked
+        ? bookmarkClickedImage
+        : bookmarkImage});
+      background-color: transparent;
+      background-size: cover;
+      border: none;
+      color: white;
+      &:not(:last-child) {
+        margin-right: 2px;
+      }
+    `
+
+    return (
+      <StyledActivity>
+        <StyledButton
+          isBookmarked={isBookmarked}
+          onClick={e => this.props.onBookmark()}
+        />{' '}
+        {text}
+      </StyledActivity>
+    )
   }
 }
