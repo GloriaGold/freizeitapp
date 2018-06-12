@@ -9,7 +9,7 @@ const StyledActivity = styled('div')`
   align-items: center;
   justify-content: space-between;
   height: 65px;
-  background: #cbe0e8;
+  background: white;
   border: 1px solid #ccc;
   border-radius: 4px;
   overflow: hidden;
@@ -17,6 +17,8 @@ const StyledActivity = styled('div')`
   font-size: 1.3em;
   display: block;
   margin-bottom: 20px;
+  color: grey;
+  box-shadow: 10px 5px 5px #f1dcf1;
 `
 
 export default class ActivityItem extends Component {

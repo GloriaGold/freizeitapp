@@ -65,6 +65,7 @@ class App extends Component {
         <Title>Discover</Title>
         {this.state.filter === true ? (
           <List>
+            IF
             {this.state.activities
               .filter(activity => activity.isBookmarked)
               .map(activity => {
@@ -79,6 +80,7 @@ class App extends Component {
           </List>
         ) : (
           <List>
+            ELSE
             {this.state.activities.map(activity => {
               return (
                 <ActivityItem
@@ -93,7 +95,6 @@ class App extends Component {
 
         <Footer>
           <button onClick={e => this.toggleFilter()}>
-            {' '}
             <span role="img">🏆</span>
           </button>
         </Footer>
