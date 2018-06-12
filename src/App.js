@@ -54,7 +54,7 @@ class App extends Component {
       activities: [...startOfNewArray, newObject, ...endOfNewArray],
     })
   }
-  toggleFilter() {
+  toggleFilter = () => {
     this.setState({
       filter: !this.state.filter,
     })
@@ -64,23 +64,12 @@ class App extends Component {
     return (
       <Grid>
         <Title>Discover</Title>
-        {this.state.filter === true ? (
-          <List>
-            {this.state.activities
-              .filter(activity => activity.isBookmarked)
-              .map(activity => {
-                return (
-                  <ActivityItem
-                    text={activity.activity}
-                    isBookmarked={activity.isBookmarked}
-                    onBookmark={() => this.bookmark(activity.id)}
-                  />
-                )
-              })}
-          </List>
-        ) : (
-          <List>
-            {this.state.activities.map(activity => {
+        <List>
+          {this.state.activities
+            .filter(
+              activity => (this.state.filter ? activity.isBookmarked : true)
+            )
+            .map(activity => {
               return (
                 <ActivityItem
                   text={activity.activity}
@@ -89,11 +78,9 @@ class App extends Component {
                 />
               )
             })}
-          </List>
-        )}
-
+        </List>
         <Footer>
-          <button onClick={e => this.toggleFilter()}>show favorites</button>
+          <button onClick={this.toggleFilter}>show favorites</button>
         </Footer>
       </Grid>
     )
