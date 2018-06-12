@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-
 import styled from 'react-emotion'
 import activities from './activities'
 import ActivityItem from './components/ActivityItem'
 
 const Grid = styled('div')`
   display: grid;
-  grid-template-rows: 400px auto;
+  grid-template-rows: 400px auto 40px;
 `
 const Title = styled('div')`
   grid-row: 1;
@@ -23,9 +22,17 @@ const List = styled('div')`
   overflow: scroll;
 `
 
+const Footer = styled('div')`
+  grid-row: 3;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #d6c1f5;
+`
+
 class App extends Component {
   state = {
     activities: activities,
+    filter: false,
   }
 
   bookmark(id) {
@@ -41,10 +48,14 @@ class App extends Component {
       ...foundActivity,
       isBookmarked: !foundActivity.isBookmarked,
     }
-    console.log(newObject)
 
     this.setState({
       activities: [...startOfNewArray, newObject, ...endOfNewArray],
+    })
+  }
+  toggleFilter() {
+    this.setState({
+      filter: !this.state.filter,
     })
   }
 
@@ -52,17 +63,40 @@ class App extends Component {
     return (
       <Grid>
         <Title>Discover</Title>
-        <List>
-          {this.state.activities.map(activity => {
-            return (
-              <ActivityItem
-                text={activity.activity}
-                isBookmarked={activity.isBookmarked}
-                onBookmark={() => this.bookmark(activity.id)}
-              />
-            )
-          })}
-        </List>
+        {this.state.filter === true ? (
+          <List>
+            {this.state.activities
+              .filter(activity => activity.isBookmarked)
+              .map(activity => {
+                return (
+                  <ActivityItem
+                    text={activity.activity}
+                    isBookmarked={activity.isBookmarked}
+                    onBookmark={() => this.bookmark(activity.id)}
+                  />
+                )
+              })}
+          </List>
+        ) : (
+          <List>
+            {this.state.activities.map(activity => {
+              return (
+                <ActivityItem
+                  text={activity.activity}
+                  isBookmarked={activity.isBookmarked}
+                  onBookmark={() => this.bookmark(activity.id)}
+                />
+              )
+            })}
+          </List>
+        )}
+
+        <Footer>
+          <button onClick={e => this.toggleFilter()}>
+            {' '}
+            <span role="img">🏆</span>
+          </button>
+        </Footer>
       </Grid>
     )
   }
