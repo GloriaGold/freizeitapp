@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import styled from 'react-emotion'
 import activities from './activities'
 import ActivityItem from './components/ActivityItem'
+import Detailpage from './components/Detailpage'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 const Grid = styled('div')`
   display: grid;
@@ -62,27 +64,38 @@ class App extends Component {
 
   render() {
     return (
-      <Grid>
-        <Title>Discover</Title>
-        <List>
-          {this.state.activities
-            .filter(
-              activity => (this.state.filter ? activity.isBookmarked : true)
-            )
-            .map(activity => {
-              return (
-                <ActivityItem
-                  text={activity.activity}
-                  isBookmarked={activity.isBookmarked}
-                  onBookmark={() => this.bookmark(activity.id)}
-                />
-              )
-            })}
-        </List>
-        <Footer>
-          <button onClick={this.toggleFilter}>show favorites</button>
-        </Footer>
-      </Grid>
+      <Router>
+        <div>
+          <div>
+            <Route exact path="/" render={<div>Hello world</div>} />
+            <Route
+              path="/Detail"
+              render={() => <Detailpage activity={this.state.activities} />}
+            />
+          </div>
+          <Grid>
+            <Title>Discover</Title>
+            <List>
+              {this.state.activities
+                .filter(
+                  activity => (this.state.filter ? activity.isBookmarked : true)
+                )
+                .map(activity => {
+                  return (
+                    <ActivityItem
+                      text={activity.activity}
+                      isBookmarked={activity.isBookmarked}
+                      onBookmark={() => this.bookmark(activity.id)}
+                    />
+                  )
+                })}
+            </List>
+            <Footer>
+              <button onClick={this.toggleFilter}>show favorites</button>
+            </Footer>
+          </Grid>
+        </div>
+      </Router>
     )
   }
 }
