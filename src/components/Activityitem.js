@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'react-emotion'
 import bookmarkImage from '../images/bookmark_icon.svg'
 import bookmarkClickedImage from '../images/bookmark__clicked.svg'
+import { Link } from 'react-router-dom'
 
 const StyledActivity = styled('div')`
   display: flex;
@@ -40,13 +41,12 @@ export default class ActivityItem extends Component {
     `
 
     return (
-      <StyledActivity>
-        <StyledButton
-          isBookmarked={isBookmarked}
-          onClick={e => this.props.onBookmark()}
-        />{' '}
-        {text}
-      </StyledActivity>
+      <Link to={`/detail`}>
+        <StyledActivity>
+          <StyledButton onClick={e => this.props.onBookmark(this.props.id)} />{' '}
+          {text}
+        </StyledActivity>
+      </Link>
     )
   }
 }

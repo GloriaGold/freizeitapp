@@ -1,18 +1,22 @@
 import React, { Component } from 'react'
-import { css } from 'emotion'
+import activities from '../activities'
 
-import { Link } from 'react-router-dom'
-
-const imageStyle = css`
-  background-position: center;
-  background-size: cover;
-  background-repeat: none;
-  width: 100%;
-  height: 300px;
-`
+import ActivityDetails from './ActivityDetails'
 
 export default class DetailPage extends Component {
   render() {
-    return <div>Hello</div>
+    return (
+      <div>
+        {Object.keys(activities).map(activity => {
+          return (
+            <ActivityDetails
+              title={activity.title}
+              description={activity.description}
+              image={activity.image}
+            />
+          )
+        })}
+      </div>
+    )
   }
 }

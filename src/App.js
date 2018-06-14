@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
 import styled from 'react-emotion'
-import activities from './activities'
-import ActivityItem from './components/ActivityItem'
-import Detailpage from './components/Detailpage'
+
+import DetailPage from './components/DetailPage'
+import HomePageView from './containers/HomePageView'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducers/reducer'
+import initialState from './reducers/initialState'
+import FooterView from './containers/FooterView'
 
 const Grid = styled('div')`
   display: grid;
@@ -20,11 +26,6 @@ const Title = styled('div')`
   align-items: center;
 `
 
-const List = styled('div')`
-  grid-row: 2;
-  overflow: scroll;
-`
-
 const Footer = styled('div')`
   grid-row: 3;
   display: flex;
@@ -32,69 +33,26 @@ const Footer = styled('div')`
   background-color: #d6c1f5;
 `
 
+const store = createStore(
+  reducer,
+  initialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+console.log(store)
+
 class App extends Component {
-  state = {
-    activities: activities,
-    filter: false,
-  }
-
-  bookmark(id) {
-    const foundActivityIndex = this.state.activities.findIndex(
-      activity => activity.id === id
-    )
-
-    const foundActivity = this.state.activities[foundActivityIndex]
-
-    const startOfNewArray = this.state.activities.slice(0, foundActivityIndex)
-    const endOfNewArray = this.state.activities.slice(foundActivityIndex + 1)
-    const newObject = {
-      ...foundActivity,
-      isBookmarked: !foundActivity.isBookmarked,
-    }
-
-    this.setState({
-      activities: [...startOfNewArray, newObject, ...endOfNewArray],
-    })
-  }
-  toggleFilter = () => {
-    this.setState({
-      filter: !this.state.filter,
-    })
-  }
-
   render() {
     return (
       <Router>
-        <div>
-          <div>
-            <Route exact path="/" render={<div>Hello world</div>} />
-            <Route
-              path="/Detail"
-              render={() => <Detailpage activity={this.state.activities} />}
-            />
-          </div>
+        <Provider store={store}>
           <Grid>
             <Title>Discover</Title>
-            <List>
-              {this.state.activities
-                .filter(
-                  activity => (this.state.filter ? activity.isBookmarked : true)
-                )
-                .map(activity => {
-                  return (
-                    <ActivityItem
-                      text={activity.activity}
-                      isBookmarked={activity.isBookmarked}
-                      onBookmark={() => this.bookmark(activity.id)}
-                    />
-                  )
-                })}
-            </List>
-            <Footer>
-              <button onClick={this.toggleFilter}>show favorites</button>
-            </Footer>
+            <Route exact path="/" render={() => <HomePageView />} />
+            <Route path={`/detail/`} render={() => <DetailPage />} />
+
+            <FooterView />
           </Grid>
-        </div>
+        </Provider>
       </Router>
     )
   }

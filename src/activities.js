@@ -1,4 +1,5 @@
 import uid from 'uid'
+
 import swim from './images/swimming.jpg'
 import grillen from './images/grillen.jpg'
 import dance from './images/dance.jpg'
