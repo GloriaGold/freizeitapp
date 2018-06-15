@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'react-emotion'
-import ActivityItemView from '../containers/ActivityItemView'
+import ActivityItem from './ActivityItem'
 
 const List = styled('div')`
   grid-row: 2;
@@ -17,12 +17,12 @@ export default class HomePage extends Component {
           )
           .map(activity => {
             return (
-              <ActivityItemView
+              <ActivityItem
                 key={activity.id}
                 id={activity.id}
                 text={activity.activity}
                 isBookmarked={activity.isBookmarked}
-                bookmark={this.props.bookmark}
+                bookmark={id => this.props.bookmark(id)}
               />
             )
           })}

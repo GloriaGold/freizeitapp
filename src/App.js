@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 import reducer from './reducers/reducer'
 import initialState from './reducers/initialState'
 import FooterView from './containers/FooterView'
+import activities from './activities'
 
 const Grid = styled('div')`
   display: grid;
@@ -26,29 +27,27 @@ const Title = styled('div')`
   align-items: center;
 `
 
-const Footer = styled('div')`
-  grid-row: 3;
-  display: flex;
-  justify-content: space-evenly;
-  background-color: #d6c1f5;
-`
-
 const store = createStore(
   reducer,
   initialState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
-console.log(store)
 
 class App extends Component {
   render() {
+    const state = store.getState()
     return (
       <Router>
         <Provider store={store}>
           <Grid>
             <Title>Discover</Title>
             <Route exact path="/" render={() => <HomePageView />} />
-            <Route path={`/detail/`} render={() => <DetailPage />} />
+            <Route
+              path={`/information/:id`}
+              render={props => (
+                <DetailPage match={props.match} activities={state.activities} />
+              )}
+            />
 
             <FooterView />
           </Grid>

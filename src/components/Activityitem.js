@@ -24,7 +24,7 @@ const StyledActivity = styled('div')`
 
 export default class ActivityItem extends Component {
   render() {
-    const { text, isBookmarked } = this.props
+    const { text, isBookmarked, id } = this.props
     const StyledButton = styled('button')`
       height: 20px;
 
@@ -41,12 +41,12 @@ export default class ActivityItem extends Component {
     `
 
     return (
-      <Link to={`/detail`}>
-        <StyledActivity>
-          <StyledButton onClick={e => this.props.onBookmark(this.props.id)} />{' '}
-          {text}
-        </StyledActivity>
-      </Link>
+      <div>
+        <StyledButton onClick={e => this.props.bookmark(this.props.id)} />
+        <Link to={`/information/${id}`}>
+          <StyledActivity>{text}</StyledActivity>
+        </Link>
+      </div>
     )
   }
 }

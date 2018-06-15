@@ -5,17 +5,17 @@ import ActivityDetails from './ActivityDetails'
 
 export default class DetailPage extends Component {
   render() {
+    const id = this.props.match.params.id
+    const activity = activities.find(activity => activity.id === id)
+
     return (
       <div>
-        {Object.keys(activities).map(activity => {
-          return (
-            <ActivityDetails
-              title={activity.title}
-              description={activity.description}
-              image={activity.image}
-            />
-          )
-        })}
+        <ActivityDetails
+          key={activity.id}
+          title={activity.title}
+          description={activity.description}
+          image={activity.image}
+        />
       </div>
     )
   }

@@ -16,7 +16,7 @@ export default class ActivityDetails extends Component {
     return (
       <div>
         <span>{title}</span>
-        <div>{image}</div>
+        <img src={image} className="imageStyle" />
         <div>{description}</div>
       </div>
     )

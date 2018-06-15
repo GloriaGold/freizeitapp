@@ -26,10 +26,10 @@ export default (state, action) => {
     case Actions.TOGGLE_FILTER:
       return {
         ...state,
-        filter: !this.state.filter,
+        filter: !state.filter,
       }
 
     default:
-      break
+      return state
   }
 }

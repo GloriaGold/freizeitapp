@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import HomePage from '../components/HomePage'
-import { toggleFilter, bookmark } from '../actions'
+import { bookmark } from '../actions'
 
 const mapStateToProps = state => ({
   filter: state.filter,

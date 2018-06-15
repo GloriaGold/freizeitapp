@@ -14,7 +14,7 @@ import wandern from './images/wandern.jpg'
 import shoppen from './images/shopping.jpg'
 import roadtrip from './images/roadtrip.jpg'
 
-export default [
+const initialActivities = [
   {
     activity: 'schwimmen',
     image: swim,
@@ -159,3 +159,16 @@ export default [
     id: uid(),
   },
 ]
+
+const savedActivities = localStorage.getItem('activities')
+
+let activities
+
+if (savedActivities) {
+  activities = JSON.parse(savedActivities)
+} else {
+  localStorage.setItem('activities', JSON.stringify(initialActivities))
+  activities = initialActivities
+}
+
+export default activities
