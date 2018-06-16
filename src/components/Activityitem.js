@@ -20,6 +20,7 @@ const StyledActivity = styled('div')`
   margin-bottom: 20px;
   color: grey;
   box-shadow: 10px 5px 5px #f1dcf1;
+  text-decoration: none;
 `
 
 export default class ActivityItem extends Component {

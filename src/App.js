@@ -12,19 +12,15 @@ import initialState from './reducers/initialState'
 import FooterView from './containers/FooterView'
 import activities from './activities'
 
+const Header = styled('header')`
+  width: 100%;
+  height: 91px;
+  background-color: #d6c1f5;
+`
+
 const Grid = styled('div')`
   display: grid;
   grid-template-rows: 400px auto 40px;
-`
-const Title = styled('div')`
-  grid-row: 1;
-  background-image:
-  background-color: #d0eef9;
-  margin-bottom: 10px;
-  font-size: 4em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `
 
 const store = createStore(
@@ -40,16 +36,14 @@ class App extends Component {
       <Router>
         <Provider store={store}>
           <Grid>
-            <Title>Discover</Title>
             <Route exact path="/" render={() => <HomePageView />} />
+            <FooterView />
             <Route
               path={`/information/:id`}
               render={props => (
                 <DetailPage match={props.match} activities={state.activities} />
               )}
             />
-
-            <FooterView />
           </Grid>
         </Provider>
       </Router>
