@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  bookmark: () => dispatch(bookmark()),
+  bookmark: id => dispatch(bookmark(id)),
 })
 
 export default connect(
