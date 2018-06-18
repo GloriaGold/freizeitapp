@@ -7,15 +7,16 @@ import styled from 'react-emotion'
 import backArrow from '../images/backArrow.svg'
 import locationIcon from '../images/locationIcon.svg'
 
+const Body = styled('body')`
+  background-color: #d6c1f5;
+`
 const Header = styled('header')`
   width: 100%;
   height: 91px;
-  background-color: #d6c1f5;
   color: white;
   font-size: 16px;
 `
 const imageStyle = css`
-  background-position: center;
   background-size: 10%;
   width: 313px;
   height: 281px;
@@ -57,7 +58,7 @@ export default class ActivityDetails extends Component {
 
     return (
       <div>
-        <div className={background}>
+        <Body>
           <Header>
             <Link to={`/`}>
               <img src={backArrow} />
@@ -81,7 +82,7 @@ export default class ActivityDetails extends Component {
           <button className={buttonStyle}>
             find in Maps<img src={locationIcon} />
           </button>
-        </div>
+        </Body>
       </div>
     )
   }
