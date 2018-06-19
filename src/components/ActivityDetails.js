@@ -59,17 +59,7 @@ const subtitle = css`
   font-weight: 300;
   font-size: 24px;
 `
-const buttonStyle = css`
-  background-color: white;
-  height: 54px;
-  color: grey;
-  font-size: 22px;
-  border-radius: 10px;
-  border-color: transparent;
-  margin: 35px 0 20px 8px;
-  letter-spacing: 1px;
-  font-weight: 100;
-`
+
 export default class ActivityDetails extends Component {
   render() {
     const { activity, description, image } = this.props
