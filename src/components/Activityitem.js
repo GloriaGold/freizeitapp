@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+
 import styled from 'react-emotion'
+
 import bookmarkImage from '../images/bookmark_icon.svg'
 import bookmarkClickedImage from '../images/bookmark__clicked.svg'
-import { Link } from 'react-router-dom'
 
 const StyledActivity = styled('div')`
   display: flex;

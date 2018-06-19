@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import styled from 'react-emotion'
-import ActivityItem from './ActivityItem'
-import group from '../images/group.jpg'
 import { css } from 'emotion'
+import styled from 'react-emotion'
+
+import ActivityItem from './ActivityItem'
+import FooterView from '../containers/FooterView'
+import group from '../images/group.jpg'
 
 const List = styled('div')`
   grid-row: 2;
@@ -21,36 +23,42 @@ const Title = styled('div')`
 `
 
 const imageStyle = css`
-  background-position: center;
-  background-size: 10%;
-  width: 100%;
+  width: auto;
   height: 281px;
+`
+
+const Grid = styled('div')`
+  display: grid;
+  grid-template-rows: 230px auto 47px;
 `
 
 export default class HomePage extends Component {
   render() {
     return (
-      <List>
+      <Grid>
         <Title>Discover</Title>
-        <img className={imageStyle} src={group} />
-        {this.props.activities
-          .filter(
-            activity => (this.props.filter ? activity.isBookmarked : true)
-          )
-          .map(activity => {
-            return (
-              <div>
-                <ActivityItem
-                  key={activity.id}
-                  id={activity.id}
-                  text={activity.activity}
-                  isBookmarked={activity.isBookmarked}
-                  bookmark={id => this.props.bookmark(id)}
-                />
-              </div>
+        <List>
+          <img className={imageStyle} src={group} alt="group" />
+          {this.props.activities
+            .filter(
+              activity => (this.props.filter ? activity.isBookmarked : true)
             )
-          })}
-      </List>
+            .map(activity => {
+              return (
+                <div>
+                  <ActivityItem
+                    key={activity.id}
+                    id={activity.id}
+                    text={activity.activity}
+                    isBookmarked={activity.isBookmarked}
+                    bookmark={id => this.props.bookmark(id)}
+                  />
+                </div>
+              )
+            })}
+        </List>
+        <FooterView />
+      </Grid>
     )
   }
 }

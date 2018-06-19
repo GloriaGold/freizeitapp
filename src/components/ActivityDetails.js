@@ -5,52 +5,70 @@ import { css } from 'emotion'
 import styled from 'react-emotion'
 
 import backArrow from '../images/backArrow.svg'
-import locationIcon from '../images/locationIcon.svg'
+import FooterView from '../containers/FooterView'
 
-const Body = styled('body')`
+const Grid = styled('div')`
+  display: grid;
+  grid-template-rows: 104px auto 47px;
   background-color: #d6c1f5;
+  height: 100vh;
+`
+
+const Section = styled('section')`
+  background-color: #d6c1f5;
+  padding: 0 12px;
+  margin-bottom: 12px;
 `
 const Header = styled('header')`
-  width: 100%;
-  height: 91px;
+  grid-row: 1;
+  margin: 25px 37px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  background-color: #d6c1f5;
   color: white;
   font-size: 16px;
 `
+const Title = styled('div')`
+  font-size: 28px;
+  margin-left: 80px;
+`
 const imageStyle = css`
   background-size: 10%;
-  width: 313px;
-  height: 281px;
-  margin: 20px 0px 0px 25px;
+  width: 100%;
+  height: auto;
+  margin-top: -100px;
 `
 const textBox = css`
-  width: 350px;
+  grid-row: 2;
   height: 330px;
   background-color: white;
   border-radius: 18px;
-  margin: -120px 10px 0px 10px;
+  margin: 140px 10px 0 10px;
+  padding: 0 18px;
 `
-
-const background = css`
-  background-color: #d6c1f5;
+const innerText = css`
+  margin-top: 20px;
+  height: 100px;
+  color: grey;
+  letter-spacing: 1px;
 `
-
+const subtitle = css`
+  margin-top: 26px;
+  color: #313944;
+  font-weight: 300;
+  font-size: 24px;
+`
 const buttonStyle = css`
   background-color: white;
-  width: 350px;
   height: 54px;
   color: grey;
   font-size: 22px;
   border-radius: 10px;
   border-color: transparent;
-  margin: 35px 0px 20px 8px;
+  margin: 35px 0 20px 8px;
   letter-spacing: 1px;
   font-weight: 100;
-`
-const innerText = css`
-  width: 350px;
-  height: 100px;
-  color: grey;
-  letter-spacing: 1px;
 `
 export default class ActivityDetails extends Component {
   render() {
@@ -58,31 +76,22 @@ export default class ActivityDetails extends Component {
 
     return (
       <div>
-        <Body>
+        <Grid>
           <Header>
             <Link to={`/`}>
-              <img src={backArrow} />
+              <img src={backArrow} alt="backArrow" />
             </Link>
-            DETAIL
+            <Title>DETAIL</Title>
           </Header>
-          <span>{activity}</span>
-          <img className={imageStyle} src={image} />
-          <div className={textBox}>
-            <span className={innerText}>
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              {description}
-            </span>
-          </div>
-          <button className={buttonStyle}>
-            find in Maps<img src={locationIcon} />
-          </button>
-        </Body>
+          <Section>
+            <div className={textBox}>
+              <img className={imageStyle} src={image} alt="activity" />
+              <div className={subtitle}>Ich bin die Teilüberschrift</div>
+              <div className={innerText}>{description}</div>
+            </div>
+          </Section>
+          <FooterView />
+        </Grid>
       </div>
     )
   }
