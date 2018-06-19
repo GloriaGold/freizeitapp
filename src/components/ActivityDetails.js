@@ -12,6 +12,7 @@ const Grid = styled('div')`
   grid-template-rows: 104px auto 47px;
   background-color: #d6c1f5;
   height: 100vh;
+  font-family: 'HelveticaNeue-Regular', sans-serif;
 `
 
 const Section = styled('section')`
@@ -31,13 +32,15 @@ const Header = styled('header')`
 `
 const Title = styled('div')`
   font-size: 28px;
-  margin-left: 80px;
+  margin: 6px auto;
+  text-align: center;
+  text-transform: uppercase;
 `
 const imageStyle = css`
   background-size: 10%;
   width: 100%;
   height: auto;
-  margin-top: -100px;
+  margin-top: -126px;
 `
 const textBox = css`
   grid-row: 2;
@@ -48,21 +51,23 @@ const textBox = css`
   padding: 0 18px;
 `
 const innerText = css`
+  font-size: 18;
+  line-height: 1.6em;
+  font-weight: 200;
   margin-top: 20px;
   height: 100px;
-  color: grey;
-  letter-spacing: 1px;
+  color: #9b9b9b;
 `
-const subtitle = css`
+const subtitleStyling = css`
   margin-top: 26px;
-  color: #313944;
-  font-weight: 300;
+  font-weight: Medium;
+  color: #4a4a4a;
   font-size: 24px;
 `
 
 export default class ActivityDetails extends Component {
   render() {
-    const { activity, description, image } = this.props
+    const { activity, subtitle, description, image } = this.props
 
     return (
       <div>
@@ -71,12 +76,12 @@ export default class ActivityDetails extends Component {
             <Link to={`/`}>
               <img src={backArrow} alt="backArrow" />
             </Link>
-            <Title>DETAIL</Title>
+            <Title>{activity}</Title>
           </Header>
           <Section>
             <div className={textBox}>
               <img className={imageStyle} src={image} alt="activity" />
-              <div className={subtitle}>Ich bin die Teilüberschrift</div>
+              <div className={subtitleStyling}>ich bin ein Untertitel </div>
               <div className={innerText}>{description}</div>
             </div>
           </Section>

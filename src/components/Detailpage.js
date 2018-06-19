@@ -12,7 +12,8 @@ export default class DetailPage extends Component {
       <div>
         <ActivityDetails
           key={activity.id}
-          title={activity.title}
+          activity={activity.activity}
+          subtitle={activity.subtitle}
           description={activity.description}
           image={activity.image}
         />

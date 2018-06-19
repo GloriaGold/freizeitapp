@@ -22,7 +22,8 @@ const initialActivities = [
     checked: false,
 
     description:
-      'ich bin ein Beispieltext und werde später ausführlicher ausgearbeitet',
+      'Ich bin ein Beispieltext ondonsfoansnfonasfon sund werde später ausführlicher ausgearbeitet. ',
+    subtitle: 'ich bin die Teilüberschrift',
     isBookmarked: false,
 
     id: uid(),
@@ -34,6 +35,7 @@ const initialActivities = [
     checked: false,
     description:
       'ich bin ein Beispieltext und werde später ausführlicher ausgearbeitet',
+    subtitle: 'ich bin die Teilüberschrift',
     isBookmarked: false,
     id: uid(),
   },
@@ -44,6 +46,7 @@ const initialActivities = [
     checked: false,
     description:
       'ich bin ein Beispieltext und werde später ausführlicher ausgearbeitet',
+    subtitle: 'ich bin die Teilüberschrift',
     isBookmarked: false,
     id: uid(),
   },
@@ -54,6 +57,7 @@ const initialActivities = [
     checked: false,
     description:
       'ich bin ein Beispieltext und werde später ausführlicher ausgearbeitet',
+    subtitle: 'ich bin die Teilüberschrift',
     isBookmarked: false,
     id: uid(),
   },
@@ -64,6 +68,7 @@ const initialActivities = [
     checked: false,
     description:
       'ich bin ein Beispieltext und werde später ausführlicher ausgearbeitet',
+    subtitle: 'ich bin die Teilüberschrift',
     isBookmarked: false,
     id: uid(),
   },
@@ -74,6 +79,7 @@ const initialActivities = [
     checked: false,
     description:
       'ich bin ein Beispieltext und werde später ausführlicher ausgearbeitet',
+    subtitle: 'ich bin die Teilüberschrift',
     isBookmarked: false,
     id: uid(),
   },
@@ -84,6 +90,7 @@ const initialActivities = [
     checked: false,
     description:
       'ich bin ein Beispieltext und werde später ausführlicher ausgearbeitet',
+    subtitle: 'ich bin die Teilüberschrift',
     isBookmarked: false,
     id: uid(),
   },
@@ -94,6 +101,7 @@ const initialActivities = [
     checked: false,
     description:
       'ich bin ein Beispieltext und werde später ausführlicher ausgearbeitet',
+    subtitle: 'ich bin die Teilüberschrift',
     isBookmarked: false,
     id: uid(),
   },
@@ -104,6 +112,7 @@ const initialActivities = [
     checked: false,
     description:
       'ich bin ein Beispieltext und werde später ausführlicher ausgearbeitet',
+    subtitle: 'ich bin die Teilüberschrift',
     isBookmarked: false,
     id: uid(),
   },
@@ -114,6 +123,7 @@ const initialActivities = [
     checked: false,
     description:
       'ich bin ein Beispieltext und werde später ausführlicher ausgearbeitet',
+    subtitle: 'ich bin die Teilüberschrift',
     isBookmarked: false,
     id: uid(),
   },
@@ -124,6 +134,7 @@ const initialActivities = [
     checked: false,
     description:
       'ich bin ein Beispieltext und werde später ausführlicher ausgearbeitet',
+    subtitle: 'ich bin die Teilüberschrift',
     isBookmarked: false,
     id: uid(),
   },
@@ -134,6 +145,7 @@ const initialActivities = [
     checked: false,
     description:
       'ich bin ein Beispieltext und werde später ausführlicher ausgearbeitet',
+    subtitle: 'ich bin die Teilüberschrift',
     isBookmarked: false,
     id: uid(),
   },
@@ -144,6 +156,7 @@ const initialActivities = [
     checked: false,
     description:
       'ich bin ein Beispieltext und werde später ausführlicher ausgearbeitet',
+    subtitle: 'ich bin die Teilüberschrift',
     isBookmarked: false,
     id: uid(),
   },
@@ -155,6 +168,7 @@ const initialActivities = [
     checked: false,
     description:
       'ich bin ein Beispieltext und werde später ausführlicher ausgearbeitet',
+    subtitle: 'ich bin die Teilüberschrift',
     isBookmarked: false,
     id: uid(),
   },
