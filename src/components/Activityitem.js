@@ -1,29 +1,36 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+
 import styled from 'react-emotion'
+import { css } from 'emotion'
+
 import bookmarkImage from '../images/bookmark_icon.svg'
 import bookmarkClickedImage from '../images/bookmark__clicked.svg'
 
 const StyledActivity = styled('div')`
   display: flex;
-  font-family: sans-serif;
-  align-items: center;
   justify-content: space-between;
-  height: 65px;
+  height: 80px;
   background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 18px;
   overflow: hidden;
-  text-align: center;
-  font-size: 1.3em;
-  display: block;
-  margin-bottom: 20px;
-  color: grey;
-  box-shadow: 10px 5px 5px #f1dcf1;
-`
+  margin: 30px 14px;
+  padding: 10px;
 
+  box-shadow: 3px 2px 40px 0.1px rgba(165, 128, 207, 0.32);
+`
+const textStyle = css`
+  font-family: sans-serif;
+  text-align: left;
+  font-size: 24px;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: #9b9b9b;
+`
 export default class ActivityItem extends Component {
   render() {
-    const { text, isBookmarked } = this.props
+    const { text, isBookmarked, id } = this.props
+
     const StyledButton = styled('button')`
       height: 20px;
 
@@ -34,19 +41,21 @@ export default class ActivityItem extends Component {
       background-size: cover;
       border: none;
       color: white;
-      &:not(:last-child) {
-        margin-right: 2px;
-      }
     `
 
     return (
-      <StyledActivity>
-        <StyledButton
-          isBookmarked={isBookmarked}
-          onClick={e => this.props.onBookmark()}
-        />{' '}
-        {text}
-      </StyledActivity>
+      <div>
+        <StyledActivity>
+          <div>
+            <Link className={textStyle} to={`/information/${id}`}>
+              {text}
+            </Link>
+          </div>
+          <div>
+            <StyledButton onClick={e => this.props.bookmark(this.props.id)} />
+          </div>
+        </StyledActivity>
+      </div>
     )
   }
 }

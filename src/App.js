@@ -1,88 +1,37 @@
 import React, { Component } from 'react'
-import styled from 'react-emotion'
-import activities from './activities'
-import ActivityItem from './components/ActivityItem'
 
-const Grid = styled('div')`
-  display: grid;
-  grid-template-rows: 400px auto 40px;
-`
-const Title = styled('div')`
-  grid-row: 1;
-  background-image:
-  background-color: #d0eef9;
-  margin-bottom: 10px;
-  font-size: 4em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
+import DetailPage from './components/DetailPage'
+import HomePageView from './containers/HomePageView'
 
-const List = styled('div')`
-  grid-row: 2;
-  overflow: scroll;
-`
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducers/reducer'
+import initialState from './reducers/initialState'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-const Footer = styled('div')`
-  grid-row: 3;
-  display: flex;
-  justify-content: space-evenly;
-  background-color: #d6c1f5;
-`
+const store = createStore(
+  reducer,
+  initialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 class App extends Component {
-  state = {
-    activities: activities,
-    filter: false,
-  }
-
-  bookmark(id) {
-    const foundActivityIndex = this.state.activities.findIndex(
-      activity => activity.id === id
-    )
-
-    const foundActivity = this.state.activities[foundActivityIndex]
-
-    const startOfNewArray = this.state.activities.slice(0, foundActivityIndex)
-    const endOfNewArray = this.state.activities.slice(foundActivityIndex + 1)
-    const newObject = {
-      ...foundActivity,
-      isBookmarked: !foundActivity.isBookmarked,
-    }
-
-    this.setState({
-      activities: [...startOfNewArray, newObject, ...endOfNewArray],
-    })
-  }
-  toggleFilter = () => {
-    this.setState({
-      filter: !this.state.filter,
-    })
-  }
-
   render() {
+    const state = store.getState()
     return (
-      <Grid>
-        <Title>Discover</Title>
-        <List>
-          {this.state.activities
-            .filter(
-              activity => (this.state.filter ? activity.isBookmarked : true)
-            )
-            .map(activity => {
-              return (
-                <ActivityItem
-                  text={activity.activity}
-                  isBookmarked={activity.isBookmarked}
-                  onBookmark={() => this.bookmark(activity.id)}
-                />
-              )
-            })}
-        </List>
-        <Footer>
-          <button onClick={this.toggleFilter}>show favorites</button>
-        </Footer>
-      </Grid>
+      <Router>
+        <Provider store={store}>
+          <div>
+            <Route exact path="/" component={HomePageView} />
+            <Route
+              path={`/information/:id`}
+              render={props => (
+                <DetailPage match={props.match} activities={state.activities} />
+              )}
+            />
+          </div>
+        </Provider>
+      </Router>
     )
   }
 }
