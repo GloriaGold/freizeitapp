@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { css } from 'emotion'
 import styled from 'react-emotion'
 
-import ActivityItem from './ActivityItem'
+import ActivityItem from '../components/Activityitem'
 import FooterView from '../containers/FooterView'
 import titleImage from '../images/Discover_Background.png'
 
@@ -45,9 +45,8 @@ export default class HomePage extends Component {
             )
             .map(activity => {
               return (
-                <div>
+                <div key={activity.id}>
                   <ActivityItem
-                    key={activity.id}
                     id={activity.id}
                     text={activity.activity}
                     isBookmarked={activity.isBookmarked}

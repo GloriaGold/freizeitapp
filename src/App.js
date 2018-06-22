@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import DetailPage from './components/DetailPage'
+import DetailPage from './components/Detailpage'
 import HomePageView from './containers/HomePageView'
 
 import { createStore } from 'redux'
