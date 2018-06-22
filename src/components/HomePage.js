@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { css } from 'emotion'
 import styled from 'react-emotion'
 
-import ActivityItem from '../components/Activityitem'
+import ActivityItem from '../components/ActivityItem'
 import FooterView from '../containers/FooterView'
 import titleImage from '../images/Discover_Background.png'
 
