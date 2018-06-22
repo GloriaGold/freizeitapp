@@ -22,7 +22,7 @@ const initialActivities = [
     checked: false,
 
     description:
-      'Ich bin ein Beispieltext ondonsfoansnfonasfon sund werde später ausführlicher ausgearbeitet. ',
+      'xIch bin ein Beispieltext ondonsfoansnfonasfon sund werde später ausführlicher ausgearbeitet. ',
     subtitle: 'ich bin die Teilüberschrift',
     isBookmarked: false,
 

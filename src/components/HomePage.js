@@ -45,15 +45,13 @@ export default class HomePage extends Component {
             )
             .map(activity => {
               return (
-                <div>
-                  <ActivityItem
-                    key={activity.id}
-                    id={activity.id}
-                    text={activity.activity}
-                    isBookmarked={activity.isBookmarked}
-                    bookmark={id => this.props.bookmark(id)}
-                  />
-                </div>
+                <ActivityItem
+                  key={activity.id}
+                  id={activity.id}
+                  text={activity.activity}
+                  isBookmarked={activity.isBookmarked}
+                  bookmark={id => this.props.bookmark(id)}
+                />
               )
             })}
         </List>

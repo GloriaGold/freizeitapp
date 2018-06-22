@@ -9,14 +9,14 @@ import bookmarkClickedImage from '../images/bookmark__clicked.svg'
 
 const StyledActivity = styled('div')`
   display: flex;
+  height: 60px;
+  align-items: center;
   justify-content: space-between;
-  height: 80px;
   background: white;
   border-radius: 18px;
   overflow: hidden;
   margin: 30px 14px;
   padding: 10px;
-
   box-shadow: 3px 2px 40px 0.1px rgba(165, 128, 207, 0.32);
 `
 const textStyle = css`
@@ -33,7 +33,6 @@ export default class ActivityItem extends Component {
 
     const StyledButton = styled('button')`
       height: 20px;
-
       background-image: url(${isBookmarked
         ? bookmarkClickedImage
         : bookmarkImage});
@@ -44,18 +43,12 @@ export default class ActivityItem extends Component {
     `
 
     return (
-      <div>
-        <StyledActivity>
-          <div>
-            <Link className={textStyle} to={`/information/${id}`}>
-              {text}
-            </Link>
-          </div>
-          <div>
-            <StyledButton onClick={e => this.props.bookmark(this.props.id)} />
-          </div>
-        </StyledActivity>
-      </div>
+      <StyledActivity>
+        <Link className={textStyle} to={`/information/${id}`}>
+          {text}
+        </Link>
+        <StyledButton onClick={e => this.props.bookmark(this.props.id)} />
+      </StyledActivity>
     )
   }
 }

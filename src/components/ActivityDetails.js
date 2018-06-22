@@ -81,7 +81,7 @@ export default class ActivityDetails extends Component {
           <Section>
             <div className={textBox}>
               <img className={imageStyle} src={image} alt="activity" />
-              <div className={subtitleStyling}>ich bin ein Untertitel </div>
+              <div className={subtitleStyling}>{subtitle}</div>
               <div className={innerText}>{description}</div>
             </div>
           </Section>
